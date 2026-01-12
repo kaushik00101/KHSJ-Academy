@@ -1,0 +1,166 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Student Dashboard</title>
+    <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
+    <style>
+        /* Reset */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: poppins, sans-serif;
+        }
+
+        body {
+            background-color: white;
+            color: black;
+            display: flex;
+        }
+
+        /* Sidebar */
+        .sidebar {
+            width: 220px;
+            height: 100vh;
+            background-color: black;
+            color: white;
+            padding: 20px;
+        }
+
+        .sidebar h2 {
+            color: #3d5dff;
+            margin-bottom: 20px;
+        }
+
+        .sidebar a {
+            display: block;
+            color: white;
+            text-decoration: none;
+            margin: 15px 0;
+        }
+
+        .sidebar a:hover {
+            color: #3d5dff;
+        }
+
+        /* Main Content */
+        .main {
+            flex: 1;
+            padding: 20px;
+        }
+
+        /* Header */
+        .header {
+            background-color: #3d5dff;
+            color: white;
+            padding: 15px;
+            border-radius: 5px;
+            margin-bottom: 20px;
+        }
+
+        /* Cards */
+        .cards {
+            display: flex;
+            gap: 20px;
+        }
+
+        .card {
+            background-color: white;
+            border: 2px solid #3d5dff;
+            border-radius: 5px;
+            padding: 20px;
+            width: 200px;
+            text-align: center;
+        }
+
+        .card h3 {
+            color: #1e90ff;
+            margin-bottom: 10px;
+        }
+
+        button {
+            background-color: #3d5dff;
+            color: white;
+            border: none;
+            padding: 8px 12px;
+            cursor: pointer;
+            border-radius: 3px;
+        }
+
+        button:hover {
+            background-color: black;
+        }
+    </style>
+</head>
+<body>
+
+    <!-- Sidebar -->
+    <div class="sidebar" data-aos="fade-right">
+        <h2>KHSJ</h2>
+        <a href="index.html">Home</a>
+        <a href="index.html">Courses</a>
+        <a href="planAndPricing.html">Plans & Pricing</a>
+        <a href="login.html" onclick="LogOut()">Logout</a>
+    </div>
+
+    <!-- Main Section -->
+    <div class="main" data-aos="fade-left">
+        <div class="header">
+            <h1>Welcome, <span id="studentName"></span></h1>
+            <p>Your learning dashboard</p>
+        </div>
+
+        <div class="cards">
+            <div class="card">
+                <h3>Courses</h3>
+                <p>5 Enrolled</p>
+                <button onclick="showMessage('Courses')">View</button>
+            </div>
+
+            <div class="card">
+                <h3>Assignments</h3>
+                <p>2 Pending</p>
+                <button onclick="showMessage('Assignments')">View</button>
+            </div>
+
+            <div class="card">
+                <h3>Progress</h3>
+                <p>75% Complete</p>
+                <button onclick="showMessage('Progress')">View</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- JavaScript -->
+    <script>
+        function showMessage(section) {
+            alert("Opening " + section);
+        }
+        window.onload = function() {
+        // Get the stored name from localStorage
+        let Name = localStorage.getItem("studentName");
+
+        if (Name) {
+            // Display name in the header
+            document.getElementById('studentName').innerText = Name;
+        } 
+        else {
+            // If no name found, redirect back to login
+            window.location.href = "login.html";
+    }
+}
+        function LogOut() {
+            // Clear localStorage and redirect to login page
+            localStorage.removeItem("studentName");
+            localStorage.removeItem("role");
+            window.location.href = "login.html";
+        }
+    </script>
+    <script src="script.js"></script>
+    <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+    <script>
+        AOS.init();
+    </script>
+</body>
+</html>

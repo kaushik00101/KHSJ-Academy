@@ -1,0 +1,134 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>E learning</title>
+    <link rel="stylesheet" href="styles.css">
+    <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
+</head>
+<body>
+    <div class="navbar" data-aos="fade-down">
+    <nav id="main-nav">
+        <span id="nav-head">KHSJ</span>
+        <a href="#home">Home</a>
+        <a href="#about">About</a>
+        <a href="#courses">Courses</a>
+        <a href="planAndPricing.html">Plans & Pricing</a>
+        <input type="text" placeholder="Search...">
+        <button>Search</button>
+            
+    </nav>
+    <div class="auth-links" data-aos="fade-left">
+        <a href="login.html" id="login">Login</a>
+        <a href="signup.html" id="signup">Sign Up</a>
+    </div>
+    </div>
+    <header id="home">
+        <img src="5.png" alt="" id="welcomeimg" data-aos="fade-up">
+    </header>
+    <a href="knowMore.html"><button id="know-more" data-aos="fade-down">Know more</button></a>
+    
+    <section id="courses">
+        <h2>Our Courses</h2>
+        <div class="courses-grid">
+            <div class="cards" data-aos="fade-right"><a href="https://youtu.be/l1EssrLxt7E?si=9m4ka1LJ-ERhsVxY"><img src="1.png" alt=""></a></div>
+            <div class="cards" data-aos="fade-down"><a href="https://www.youtube.com/live/xPh5ihBWang?si=3ZSLRZSEKeHsqlzd"><img src="2.png" alt=""></a></div>
+            <div class="cards" data-aos="fade-down"><a href="https://youtu.be/mLe7qWYwRU4?si=u36moOnjdkohq_Ry"><img src="3.png" alt=""></a></div>
+            <div class="cards" data-aos="fade-left"><a href="https://youtu.be/5_FLHvq4Wwg?si=MhojLSI1zj8oYWxm"><img src="4.png" alt=""></a></div>
+        </div>
+    </section>
+    <section id="about">
+        <h2>About Us</h2>
+        <p id="about-p">At KHSJ Academy, we are committed to supporting every learner on their educational journey. Join us and experience a world of knowledge, growth, and opportunity. Together, let's make learning a rewarding and inspiring adventure.</p>
+
+    </section>
+    <footer>
+        <p>&copy; 2024 KHSJ Academy. All rights reserved.</p> 
+    </footer>
+    <script>
+    const authLinks = document.querySelector(".auth-links");
+
+    if (localStorage.getItem("studentName")) {
+
+        // Hide Login & Signup
+        document.getElementById("login").style.display = "none";
+        document.getElementById("signup").style.display = "none";
+
+        // Show user icon
+        authLinks.innerHTML = `
+            <a href="dashboard.html">
+                <img src="user.png" alt="User Icon"
+                     width="35" height="35"
+                     style="cursor:pointer;">
+            </a>
+        `;
+    }
+</script>
+    <script>
+        // ======= SEARCH SUGGESTIONS =======
+const searchInput = document.querySelector("#main-nav input[type='text']");
+const suggestionsBox = document.createElement("div");
+suggestionsBox.id = "suggestions";
+suggestionsBox.style.position = "absolute";
+suggestionsBox.style.background = "white";
+suggestionsBox.style.border = "1px solid #ccc";
+suggestionsBox.style.maxWidth = "200px";
+suggestionsBox.style.zIndex = "1000";
+suggestionsBox.style.display = "none"; // hide initially
+document.querySelector("#main-nav").appendChild(suggestionsBox);
+
+// Example search suggestions
+const suggestionsList = [
+    "HTML",
+    "CSS",
+    "JavaScript",
+    "Python",
+    "C Programming",
+    "Data Science",
+    "Web Development",
+    "Machine Learning",
+    "AI",
+    "React JS"
+];
+
+searchInput.addEventListener("input", () => {
+    const input = searchInput.value.toLowerCase();
+    suggestionsBox.innerHTML = "";
+
+    if (!input) {
+        suggestionsBox.style.display = "none";
+        return;
+    }
+
+    const filtered = suggestionsList.filter(item => item.toLowerCase().includes(input));
+    filtered.forEach(item => {
+        const div = document.createElement("div");
+        div.textContent = item;
+        div.style.padding = "5px";
+        div.style.cursor = "pointer";
+        div.addEventListener("click", () => {
+            searchInput.value = item;
+            suggestionsBox.style.display = "none";
+        });
+        suggestionsBox.appendChild(div);
+    });
+
+    suggestionsBox.style.display = filtered.length ? "block" : "none";
+});
+
+// Hide suggestions if clicked outside
+document.addEventListener("click", (e) => {
+    if (!searchInput.contains(e.target) && !suggestionsBox.contains(e.target)) {
+        suggestionsBox.style.display = "none";
+    }
+});
+
+    </script>
+
+    <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+    <script>
+        AOS.init();
+    </script>
+</body>
+</html>

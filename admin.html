@@ -1,0 +1,141 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Admin Dashboard</title>
+    <style>
+        /* Reset */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: Arial, sans-serif;
+        }
+
+        body {
+            display: flex;
+            background-color: white;
+            color: black;
+        }
+
+        /* Sidebar */
+        .sidebar {
+            width: 220px;
+            height: 100vh;
+            background-color: black;
+            color: white;
+            padding: 20px;
+        }
+
+        .sidebar h2 {
+            color: #1e90ff;
+            margin-bottom: 20px;
+        }
+
+        .sidebar a {
+            display: block;
+            color: white;
+            text-decoration: none;
+            margin: 15px 0;
+        }
+
+        .sidebar a:hover {
+            color: #3d5dff;
+        }
+
+        /* Main */
+        .main {
+            flex: 1;
+            padding: 20px;
+        }
+
+        .header {
+            background-color: #3d5dff;
+            color: white;
+            padding: 15px;
+            border-radius: 5px;
+            margin-bottom: 20px;
+        }
+
+        /* Cards */
+        .cards {
+            display: flex;
+            gap: 20px;
+        }
+
+        .card {
+            border: 2px solid #3d5dff;
+            padding: 20px;
+            width: 220px;
+            border-radius: 5px;
+            text-align: center;
+        }
+
+        .card h3 {
+            color: #1e90ff;
+            margin-bottom: 10px;
+        }
+
+        button {
+            background-color: #3d5dff;
+            color: white;
+            border: none;
+            padding: 8px 12px;
+            cursor: pointer;
+            border-radius: 3px;
+        }
+
+        button:hover {
+            background-color: black;
+        }
+    </style>
+</head>
+<body>
+
+    <!-- Sidebar -->
+    <div class="sidebar">
+        <h2>Admin Panel</h2>
+        <a href="#">Dashboard</a>
+        <a href="#">Manage Students</a>
+        <a href="#">Manage Courses</a>
+        <a href="#">Reports</a>
+        <a href="index.html">Logout</a>
+    </div>
+
+    <!-- Main -->
+    <div class="main">
+        <div class="header">
+            <h1>Welcome, Admin</h1>
+            <p>Control Panel</p>
+        </div>
+
+        <div class="cards">
+            <div class="card">
+                <h3>Students</h3>
+                <p>120 Total</p>
+                <button onclick="showMessage('Students')">View</button>
+            </div>
+
+            <div class="card">
+                <h3>Courses</h3>
+                <p>15 Active</p>
+                <button onclick="showMessage('Courses')">View</button>
+            </div>
+
+            <div class="card">
+                <h3>Reports</h3>
+                <p>Monthly</p>
+                <button onclick="showMessage('Reports')">View</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- JavaScript -->
+    <script>
+        function showMessage(section) {
+            alert("Opening " + section + " section");
+        }
+    </script>
+
+</body>
+</html>
